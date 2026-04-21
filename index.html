@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NuBrakes · Analytics Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:         #f8fafc;
+      --card:       #ffffff;
+      --text:       #111827;
+      --muted:      #6b7280;
+      --soft:       #9ca3af;
+      --border:     #e5e7eb;
+      --border-soft:#f1f5f9;
+      --green:      #10b981;
+      --red:        #f43f5e;
+      --indigo:     #6366f1;
+      --blue:       #0ea5e9;
+      --teal:       #14b8a6;
+      --violet:     #8b5cf6;
+      --amber:      #f59e0b;
+      --dark:       #111827;
+      --shadow:     0 1px 4px rgba(0,0,0,0.06);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.09);
+      --radius:     12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+    }
+    button, input { font: inherit; }
+    svg { display: block; }
+
+    .app { min-height: 100vh; padding: 24px 20px 60px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 38px; height: 38px;
+      background: var(--dark);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .title { font-size: 18px; font-weight: 700; color: var(--text); }
+    .subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── SEARCH ── */
+    .search-wrap { position: relative; width: 260px; }
+    .search-wrap .ico {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--soft); pointer-events: none;
+      width: 14px; height: 14px;
+    }
+    #search {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    #search:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+    #search::placeholder { color: var(--soft); }
+
+    /* ── FILTER ── */
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 11px; font-weight: 600; color: var(--soft);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-right: 2px;
+    }
+    .filter-btn {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--card);
+      color: var(--muted);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { color: var(--text); }
+    .filter-btn.active { background: var(--dark); color: #fff; box-shadow: none; }
+    .filter-btn[data-cat="Operations"].active { background: var(--blue); }
+    .filter-btn[data-cat="Marketing"].active  { background: var(--green); }
+
+    /* ── STATS ── */
+    .stats-row {
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    #result-count { font-weight: 700; color: var(--text); }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .dash-card {
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      padding: 16px 18px 14px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+      animation: fadeUp 0.28s ease both;
+    }
+    .dash-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    /* badge — exact match to source .badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 999px; flex: 0 0 auto; }
+    .badge.ops  { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .badge.ops .badge-dot { background: #0ea5e9; }
+    .badge.mkt  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+    .badge.mkt .badge-dot { background: #10b981; }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      gap: 8px;
+    }
+
+    /* source chip — matches .delta-chip style */
+    .source-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .source-chip.sheets { color: #065f46; background: #ecfdf5; }
+    .source-chip.webapp  { color: #92400e; background: #fffbeb; }
+
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .open-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+
+    /* ── EMPTY ── */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 20px;
+      color: var(--soft);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .empty p { font-size: 13px; }
+
+    @media (max-width: 640px) {
+      .app { padding: 14px 12px 40px; }
+      .header { flex-direction: column; }
+      .search-wrap { width: 100%; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="container">
+
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.95"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.55"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="title">NuBrakes Analytics Hub</div>
+          <div class="subtitle">All dashboards &amp; reporting · <span id="live-date"></span></div>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="search" placeholder="Search dashboards…" autocomplete="off"/>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn active" data-cat="All">All</button>
+      <button class="filter-btn" data-cat="Operations">Operations</button>
+      <button class="filter-btn" data-cat="Marketing">Marketing</button>
+    </div>
+
+    <div class="stats-row">
+      Showing <span id="result-count">9</span>&nbsp;dashboards
+    </div>
+
+    <div class="grid" id="grid">
+      <div class="empty" id="empty">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <p>No dashboards match your search.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const DATA = [
+  { dashboard_name:"Operations Dashboard", category:"Operations", description:"Real-time view of operational health measuring fulfillment volume, revenue efficiency, technician productivity, margin performance, and service disruption rates. Supports staffing, scheduling, cost control, and execution quality decisions.", url:"https://docs.google.com/spreadsheets/d/1gimnPu06CU-UnA4r5rw7194CeDud0HrWwA1UZJDgnK4/edit?gid=1832836203#gid=1832836203", source:"google sheets" },
+  { dashboard_name:"Marketing Dashboard", category:"Marketing", description:"Top-of-funnel view of demand generation tracking visibility, traffic, lead volume, and acquisition efficiency across paid and non-paid channels. Evaluates campaign reach, traffic quality, cost efficiency, and lead acquisition performance.", url:"https://docs.google.com/spreadsheets/d/1f3aRi25B8Try7ewuwZwzuu7XpbmgLryfXh1-BQeUQuM/edit?pli=1&gid=2038306104#gid=2038306104", source:"google sheets" },
+  { dashboard_name:"Technician Payroll", category:"Operations", description:"Visibility into technician compensation, productivity, and payout drivers. Tracks completed jobs, revenue produced, labor hours, commissions, and other compensation components to ensure payroll accuracy and consistency.", url:"https://docs.google.com/spreadsheets/d/1fSSjEt1xWagQFmp6LUuct91A3qKptbCMChrLnM3_gXQ/edit?gid=302756755#gid=302756755", source:"google sheets" },
+  { dashboard_name:"KPI Dashboard", category:"Operations", description:"Centralized view of business performance across revenue, demand generation, conversion, and operations. Monitor core metrics, track trends over time, compare results against targets, and quickly identify areas needing attention in a single self-serve interface.", url:"https://kpidashboard.jonathan-libiran.workers.dev/", source:"webapp" },
+  { dashboard_name:"Technician Leaderboard v2", category:"Operations", description:"Ranked view of technician performance across key productivity and quality metrics. Compare output, monitor revenue contribution, track utilization, and identify top performers as well as coaching opportunities.", url:"https://docs.google.com/spreadsheets/d/1zxUQ5uDlp2_Y_Pic4truPZAX952grcRCEqe2tUS-iqU/edit?gid=0#gid=0", source:"google sheets" },
+  { dashboard_name:"Slot Tracker", category:"Operations", description:"Appointment capacity versus demand view supporting supply and demand planning. Monitor available slots, booked volume, utilization pressure, and capacity gaps across markets and time periods.", url:"https://docs.google.com/spreadsheets/d/1DT6d-MzhCYNsosTnr9fBcrn3aUg3l-v28pLf5U_oez0/edit?gid=1428677024#gid=1428677024", source:"google sheets" },
+  { dashboard_name:"Leads Command & Control", category:"Marketing", description:"Centralized view of lead mix, lead quality, and demand signals across the funnel. Monitor lead composition, customer intents, service categories, and match types to optimize marketing and improve demand forecasting.", url:"https://docs.google.com/spreadsheets/d/1kd642tnHoUPfjhRLDIL0r26n4j19ELIqEp5xr51bh5I/edit?gid=2135372535#gid=2135372535", source:"google sheets" },
+  { dashboard_name:"Parts Discrepancy Tracking — 2026", category:"Operations", description:"Visibility into gaps between expected and actual parts usage, pricing, billing, or reporting. Identify discrepancies impacting job profitability, inventory accuracy, technician execution, and customer billing.", url:"https://docs.google.com/spreadsheets/d/1Zso5Hp-d1mO-PSQ1zZQMRnnZiEj9yH0Tje5-W83arHE/edit?gid=1061418377#gid=1061418377", source:"google sheets" },
+  { dashboard_name:"S/D Dashboard", category:"Operations", description:"Consolidated view of demand, available capacity, and operational balance across markets. Monitor booking demand vs technician supply, slot availability, utilization levels, and service capacity for faster staffing and scheduling decisions.", url:"https://nubrakes-supply-demand-dashboard.pages.dev/", source:"webapp" }
+];
+
+document.getElementById('live-date').textContent = new Date().toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+
+const grid       = document.getElementById('grid');
+const empty      = document.getElementById('empty');
+const searchEl   = document.getElementById('search');
+const countEl    = document.getElementById('result-count');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+let activeFilter = 'All';
+let query = '';
+
+function render() {
+  const q = query.toLowerCase().trim();
+  const filtered = DATA.filter(d => {
+    const catOk    = activeFilter === 'All' || d.category === activeFilter;
+    const searchOk = !q || d.dashboard_name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q) || d.category.toLowerCase().includes(q) || d.source.toLowerCase().includes(q);
+    return catOk && searchOk;
+  });
+
+  grid.querySelectorAll('.dash-card').forEach(c => c.remove());
+  countEl.textContent = filtered.length;
+
+  if (!filtered.length) { empty.style.display = 'flex'; return; }
+  empty.style.display = 'none';
+
+  filtered.forEach((d, i) => {
+    const isSheets = d.source === 'google sheets';
+    const card = document.createElement('a');
+    card.className = 'dash-card';
+    card.href = d.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.style.animationDelay = `${i * 35}ms`;
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="card-name">${d.dashboard_name}</div>
+        <span class="badge ${d.category === 'Marketing' ? 'mkt' : 'ops'}">
+          <span class="badge-dot"></span>${d.category}
+        </span>
+      </div>
+      <div class="card-desc">${d.description}</div>
+      <div class="card-footer">
+        <span class="source-chip ${isSheets ? 'sheets' : 'webapp'}">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            ${isSheets
+              ? '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/>'
+              : '<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>'}
+          </svg>
+          ${isSheets ? 'Sheets' : 'Web App'}
+        </span>
+        <a class="open-btn" href="${d.url}" target="_blank" rel="noopener noreferrer">
+          Open
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7M7 7h10v10"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+searchEl.addEventListener('input', e => { query = e.target.value; render(); });
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.cat;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

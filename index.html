@@ -2,45 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
   <title>NuBrakes · Analytics Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
-      --bg:         #f8fafc;
-      --card:       #ffffff;
-      --text:       #111827;
-      --muted:      #6b7280;
-      --soft:       #9ca3af;
-      --border:     #e5e7eb;
-      --border-soft:#f1f5f9;
-      --green:      #10b981;
-      --red:        #f43f5e;
-      --indigo:     #6366f1;
-      --blue:       #0ea5e9;
-      --teal:       #14b8a6;
-      --violet:     #8b5cf6;
-      --amber:      #f59e0b;
-      --dark:       #111827;
-      --shadow:     0 1px 4px rgba(0,0,0,0.06);
-      --shadow-md:  0 4px 16px rgba(0,0,0,0.09);
-      --radius:     12px;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --soft: #9ca3af;
+      --border: #e5e7eb;
+      --border-soft: #f1f5f9;
+      --green: #10b981;
+      --red: #f43f5e;
+      --indigo: #6366f1;
+      --blue: #0ea5e9;
+      --teal: #14b8a6;
+      --violet: #8b5cf6;
+      --amber: #f59e0b;
+      --dark: #111827;
+      --shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.09);
+      --radius: 12px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
       min-height: 100%;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 14px;
     }
-    button, input { font: inherit; }
-    svg { display: block; }
 
-    .app { min-height: 100vh; padding: 24px 20px 60px; }
-    .container { max-width: 1200px; margin: 0 auto; }
+    button,
+    input {
+      font: inherit;
+    }
 
-    /* ── HEADER ── */
+    svg {
+      display: block;
+    }
+
+    .app {
+      min-height: 100vh;
+      padding: 24px 20px 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
     .header {
       display: flex;
       align-items: flex-start;
@@ -49,26 +88,53 @@
       margin-bottom: 22px;
       flex-wrap: wrap;
     }
-    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .logo {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       background: var(--dark);
       border-radius: 10px;
       display: grid;
       place-items: center;
       flex-shrink: 0;
     }
-    .title { font-size: 18px; font-weight: 700; color: var(--text); }
-    .subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-    /* ── SEARCH ── */
-    .search-wrap { position: relative; width: 260px; }
-    .search-wrap .ico {
-      position: absolute; left: 10px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--soft); pointer-events: none;
-      width: 14px; height: 14px;
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
     }
+
+    .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* SEARCH */
+
+    .search-wrap {
+      position: relative;
+      width: 260px;
+    }
+
+    .search-wrap .ico {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 14px;
+      height: 14px;
+      transform: translateY(-50%);
+      color: var(--soft);
+      pointer-events: none;
+    }
+
     #search {
       width: 100%;
       padding: 8px 12px 8px 34px;
@@ -78,79 +144,159 @@
       color: var(--text);
       font-size: 13px;
       outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
     }
-    #search:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
-    #search::placeholder { color: var(--soft); }
 
-    /* ── FILTER ── */
+    #search:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    #search::placeholder {
+      color: var(--soft);
+    }
+
+    /* FILTERS */
+
     .filter-row {
       display: flex;
+      align-items: center;
       gap: 6px;
       margin-bottom: 18px;
       flex-wrap: wrap;
-      align-items: center;
     }
+
     .filter-label {
-      font-size: 11px; font-weight: 600; color: var(--soft);
-      text-transform: uppercase; letter-spacing: 0.05em;
       margin-right: 2px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .filter-btn {
       padding: 6px 16px;
-      border-radius: 20px;
       border: none;
+      border-radius: 20px;
+      background: var(--card);
+      color: var(--muted);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      background: var(--card);
-      color: var(--muted);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
       transition: all 0.15s;
     }
-    .filter-btn:hover { color: var(--text); }
-    .filter-btn.active { background: var(--dark); color: #fff; box-shadow: none; }
-    .filter-btn[data-cat="Operations"].active { background: var(--blue); }
-    .filter-btn[data-cat="Marketing"].active  { background: var(--green); }
 
-    /* ── STATS ── */
-    .stats-row {
-      font-size: 12px; color: var(--muted);
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 5px;
+    .filter-btn:hover {
+      color: var(--text);
     }
-    #result-count { font-weight: 700; color: var(--text); }
 
-    /* ── GRID ── */
+    .filter-btn.active {
+      background: var(--dark);
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .filter-btn[data-cat="Operations"].active {
+      background: var(--blue);
+    }
+
+    .filter-btn[data-cat="Marketing"].active {
+      background: var(--green);
+    }
+
+    /* STATS */
+
+    .stats-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    #result-count {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* LOADING */
+
+    .loading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .loading-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--border);
+      border-top-color: var(--indigo);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* GRID */
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(310px, 1fr)
+      );
       gap: 14px;
     }
 
-    /* ── CARD ── */
+    /* CARD */
+
     .dash-card {
-      background: var(--card);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius);
-      padding: 16px 18px 14px;
-      box-shadow: var(--shadow);
-      text-decoration: none;
-      color: inherit;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+      padding: 16px 18px 14px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: inherit;
+      text-decoration: none;
+      transition:
+        box-shadow 0.18s,
+        border-color 0.18s,
+        transform 0.18s;
       animation: fadeUp 0.28s ease both;
     }
+
     .dash-card:hover {
       box-shadow: var(--shadow-md);
       border-color: var(--border);
       transform: translateY(-2px);
     }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .card-top {
@@ -159,271 +305,820 @@
       justify-content: space-between;
       gap: 10px;
     }
+
     .card-name {
+      flex: 1;
+      color: var(--text);
       font-size: 13px;
       font-weight: 700;
-      color: var(--text);
       line-height: 1.4;
-      flex: 1;
     }
 
-    /* badge — exact match to source .badge */
+    /* BADGE */
+
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      flex-shrink: 0;
       padding: 3px 10px;
-      border-radius: 20px;
       border: 1px solid;
+      border-radius: 20px;
       font-size: 11px;
       font-weight: 600;
-      flex-shrink: 0;
       white-space: nowrap;
     }
-    .badge-dot { width: 6px; height: 6px; border-radius: 999px; flex: 0 0 auto; }
-    .badge.ops  { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
-    .badge.ops .badge-dot { background: #0ea5e9; }
-    .badge.mkt  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
-    .badge.mkt .badge-dot { background: #10b981; }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+    }
+
+    .badge.ops {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    .badge.ops .badge-dot {
+      background: #0ea5e9;
+    }
+
+    .badge.mkt {
+      background: #ecfdf5;
+      border-color: #6ee7b7;
+      color: #065f46;
+    }
+
+    .badge.mkt .badge-dot {
+      background: #10b981;
+    }
 
     .card-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.65;
       display: -webkit-box;
+      flex: 1;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      overflow: hidden;
-      flex: 1;
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
       padding-top: 10px;
       border-top: 1px dashed var(--border);
-      gap: 8px;
     }
 
-    /* source chip — matches .delta-chip style */
+    /* SOURCE CHIP */
+
     .source-chip {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 11px;
-      font-weight: 600;
       padding: 2px 8px;
       border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
     }
-    .source-chip.sheets { color: #065f46; background: #ecfdf5; }
-    .source-chip.webapp  { color: #92400e; background: #fffbeb; }
+
+    .source-chip.sheets {
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    .source-chip.webapp {
+      background: #fffbeb;
+      color: #92400e;
+    }
 
     .open-btn {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
       padding: 4px 12px;
+      border: 1.5px solid var(--border);
       border-radius: 20px;
       background: var(--bg);
-      border: 1.5px solid var(--border);
-      cursor: pointer;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
       transition: all 0.15s;
-      text-decoration: none;
     }
-    .open-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
 
-    /* ── EMPTY ── */
+    .dash-card:hover .open-btn {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #ffffff;
+    }
+
+    /* EMPTY AND ERROR STATES */
+
     .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 64px 20px;
-      color: var(--soft);
       display: none;
+      grid-column: 1 / -1;
       flex-direction: column;
       align-items: center;
       gap: 8px;
+      padding: 64px 20px;
+      color: var(--soft);
+      text-align: center;
     }
-    .empty p { font-size: 13px; }
+
+    .empty p {
+      font-size: 13px;
+    }
+
+    .error-message {
+      color: var(--red);
+    }
+
+    .retry-btn {
+      margin-top: 6px;
+      padding: 7px 14px;
+      border: none;
+      border-radius: 8px;
+      background: var(--dark);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .retry-btn:hover {
+      opacity: 0.88;
+    }
 
     @media (max-width: 640px) {
-      .app { padding: 14px 12px 40px; }
-      .header { flex-direction: column; }
-      .search-wrap { width: 100%; }
-      .grid { grid-template-columns: 1fr; }
+      .app {
+        padding: 14px 12px 40px;
+      }
+
+      .header {
+        flex-direction: column;
+      }
+
+      .search-wrap {
+        width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
-<div class="app">
-  <div class="container">
+  <div class="app">
+    <div class="container">
 
-    <div class="header">
-      <div class="header-left">
-        <div class="logo">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.95"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5" fill="white" opacity="0.5"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.55"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5" fill="white" opacity="0.75"/>
+      <div class="header">
+        <div class="header-left">
+          <div class="logo">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="7"
+                height="7"
+                rx="1.5"
+                fill="white"
+                opacity="0.95"
+              />
+
+              <rect
+                x="14"
+                y="3"
+                width="7"
+                height="7"
+                rx="1.5"
+                fill="white"
+                opacity="0.5"
+              />
+
+              <rect
+                x="3"
+                y="14"
+                width="7"
+                height="7"
+                rx="1.5"
+                fill="white"
+                opacity="0.55"
+              />
+
+              <rect
+                x="14"
+                y="14"
+                width="7"
+                height="7"
+                rx="1.5"
+                fill="white"
+                opacity="0.75"
+              />
+            </svg>
+          </div>
+
+          <div>
+            <div class="title">
+              NuBrakes Analytics Hub
+            </div>
+
+            <div class="subtitle">
+              All dashboards &amp; reporting ·
+              <span id="live-date"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-wrap">
+          <svg
+            class="ico"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
           </svg>
+
+          <input
+            type="text"
+            id="search"
+            placeholder="Search dashboards…"
+            autocomplete="off"
+          />
         </div>
-        <div>
-          <div class="title">NuBrakes Analytics Hub</div>
-          <div class="subtitle">All dashboards &amp; reporting · <span id="live-date"></span></div>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-label">
+          Filter
+        </span>
+
+        <button
+          class="filter-btn active"
+          data-cat="All"
+          type="button"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          data-cat="Operations"
+          type="button"
+        >
+          Operations
+        </button>
+
+        <button
+          class="filter-btn"
+          data-cat="Marketing"
+          type="button"
+        >
+          Marketing
+        </button>
+      </div>
+
+      <div class="loading" id="loading">
+        <span class="loading-spinner"></span>
+        Loading dashboards…
+      </div>
+
+      <div class="stats-row" id="stats-row">
+        Showing
+        <span id="result-count">0</span>
+        dashboards
+      </div>
+
+      <div class="grid" id="grid">
+        <div class="empty" id="empty">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+
+          <p id="empty-message">
+            No dashboards match your search.
+          </p>
+
+          <button
+            class="retry-btn"
+            id="retry-btn"
+            type="button"
+            hidden
+          >
+            Try again
+          </button>
         </div>
       </div>
-      <div class="search-wrap">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" id="search" placeholder="Search dashboards…" autocomplete="off"/>
-      </div>
-    </div>
 
-    <div class="filter-row">
-      <span class="filter-label">Filter</span>
-      <button class="filter-btn active" data-cat="All">All</button>
-      <button class="filter-btn" data-cat="Operations">Operations</button>
-      <button class="filter-btn" data-cat="Marketing">Marketing</button>
     </div>
-
-    <div class="stats-row">
-      Showing <span id="result-count">9</span>&nbsp;dashboards
-    </div>
-
-    <div class="grid" id="grid">
-      <div class="empty" id="empty">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <p>No dashboards match your search.</p>
-      </div>
-    </div>
-
   </div>
-</div>
 
-<script>
-const DATA = [
-  { dashboard_name:"Operations Dashboard", category:"Operations", description:"Real-time view of operational health measuring fulfillment volume, revenue efficiency, technician productivity, margin performance, and service disruption rates. Supports staffing, scheduling, cost control, and execution quality decisions.", url:"https://docs.google.com/spreadsheets/d/1gimnPu06CU-UnA4r5rw7194CeDud0HrWwA1UZJDgnK4/edit?gid=1832836203#gid=1832836203", source:"google sheets" },
+  <script>
+    const DATA_URL =
+      "https://nubrakes-analytics.github.io/NuBrakes-Copilot/data/fact_nubrakes_analytics_hub.json";
 
-  { dashboard_name:"NuBrakes - Marketing Dashboard", category:"Marketing", description:"Top-of-funnel view of demand generation performance tracking visibility, traffic, lead volume, and acquisition efficiency across paid and non-paid channels. Evaluates campaign reach, traffic quality, cost efficiency, channel mix, and lead acquisition performance.", url:"https://docs.google.com/spreadsheets/d/1f3aRi25B8Try7ewuwZwzuu7XpbmgLryfXh1-BQeUQuM/edit?pli=1&gid=2038306104#gid=2038306104", source:"google sheets" },
+    let DATA = [];
+    let activeFilter = "All";
+    let query = "";
 
-  { dashboard_name:"Technician Payroll", category:"Operations", description:"Visibility into technician compensation, productivity, and payout drivers across the business. Tracks completed jobs, revenue produced, labor hours, commissions, and other compensation components to support payroll accuracy and consistency.", url:"https://docs.google.com/spreadsheets/d/1fSSjEt1xWagQFmp6LUuct91A3qKptbCMChrLnM3_gXQ/edit?gid=302756755#gid=302756755", source:"google sheets" },
+    const grid = document.getElementById("grid");
+    const empty = document.getElementById("empty");
+    const emptyMessage =
+      document.getElementById("empty-message");
+    const retryBtn =
+      document.getElementById("retry-btn");
+    const searchEl =
+      document.getElementById("search");
+    const countEl =
+      document.getElementById("result-count");
+    const loadingEl =
+      document.getElementById("loading");
+    const statsRow =
+      document.getElementById("stats-row");
+    const filterBtns =
+      document.querySelectorAll(".filter-btn");
 
-  { dashboard_name:"KPI Dashboard", category:"Operations", description:"Centralized view of business performance across revenue, demand generation, conversion, and operations. Monitor core metrics, track trends over time, compare results against targets, and identify areas needing attention in a single self-serve interface.", url:"https://kpidashboard.jonathan-libiran.workers.dev/", source:"webapp" },
+    document.getElementById("live-date").textContent =
+      new Date().toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      });
 
-  { dashboard_name:"Technician Leaderboard v2", category:"Operations", description:"Ranked view of technician performance across key productivity and quality metrics. Compare output, monitor revenue contribution, track utilization, and identify top performers as well as coaching opportunities.", url:"https://docs.google.com/spreadsheets/d/1zxUQ5uDlp2_Y_Pic4truPZAX952grcRCEqe2tUS-iqU/edit?gid=0#gid=0", source:"google sheets" },
+    function escapeHTML(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
 
-  { dashboard_name:"Slot Tracker", category:"Operations", description:"Appointment capacity versus demand view supporting supply and demand planning. Monitor available slots, booked volume, utilization pressure, and capacity gaps across markets and time periods.", url:"https://docs.google.com/spreadsheets/d/1DT6d-MzhCYNsosTnr9fBcrn3aUg3l-v28pLf5U_oez0/edit?gid=1428677024#gid=1428677024", source:"google sheets" },
+    function normalizeCategory(value) {
+      const category = String(value || "")
+        .trim()
+        .toLowerCase();
 
-  { dashboard_name:"Leads Command & Control", category:"Marketing", description:"Centralized view of lead mix, lead quality, and demand signals across the funnel. Monitor lead sources, shifts in lead composition, customer intents, service categories, and match types to support marketing optimization and forecasting.", url:"https://docs.google.com/spreadsheets/d/1kd642tnHoUPfjhRLDIL0r26n4j19ELIqEp5xr51bh5I/edit?gid=2135372535#gid=2135372535", source:"google sheets" },
+      if (category === "marketing") {
+        return "Marketing";
+      }
 
-  { dashboard_name:"Parts Discrepancy tracking - 2026", category:"Operations", description:"Visibility into gaps between expected and actual parts usage, pricing, billing, or reporting. Identify discrepancies impacting job profitability, inventory accuracy, technician execution, and customer billing.", url:"https://docs.google.com/spreadsheets/d/1Zso5Hp-d1mO-PSQ1zZQMRnnZiEj9yH0Tje5-W83arHE/edit?gid=1061418377#gid=1061418377", source:"google sheets" },
+      if (category === "operations") {
+        return "Operations";
+      }
 
-  { dashboard_name:"S/D Dashboard", category:"Operations", description:"Consolidated view of demand, available capacity, and operational balance across markets. Monitor booking demand vs technician supply, slot availability, utilization levels, and service capacity for faster staffing and scheduling decisions.", url:"https://nubrakes-supply-demand-dashboard.pages.dev/", source:"webapp" },
+      return value
+        ? String(value).trim()
+        : "Operations";
+    }
 
-  { dashboard_name:"NuBrakes GBL Dashboard", category:"Operations", description:"High-level view of GBL channel performance through overview and trends reporting. Monitor demand, bookings, cancellations, completions, revenue, and AOV to assess channel health and track growth, efficiency, and trend direction.", url:"https://nubrakes-analytics.github.io/nubrakes-gbl-dashboard/", source:"webapp" },
+    function normalizeSource(value, url) {
+      const source = String(value || "")
+        .trim()
+        .toLowerCase();
 
-  { dashboard_name:"Velocity x NuBrakes Partner Dashboard", category:"Operations", description:"High-level view of partnership performance through overview and trends reporting. Monitor demand, bookings, and completions to assess partner health, track performance over time, and support growth and optimization decisions.", url:"https://nubrakes-analytics.github.io/nubrakes-velocity-dashboard/", source:"webapp" },
+      const dashboardUrl =
+        String(url || "").toLowerCase();
 
-  { dashboard_name:"NuBrakes Referral Program Dashboard", category:"Operations", description:"High-level view of referral performance tracking actuals versus targets, attainment, pacing, market rankings, and referral trends over time. Supports coaching, accountability, and faster decisions to improve referral growth and repair conversion.", url:"https://nubrakes-analytics.github.io/nubrakes-referral-dashboard/", source:"webapp" },
+      if (
+        source.includes("sheet") ||
+        dashboardUrl.includes(
+          "docs.google.com/spreadsheets"
+        )
+      ) {
+        return "google sheets";
+      }
 
-  { dashboard_name:"NuBrakes Cancellation Dashboard", category:"Operations", description:"Visibility into job cancellation trends, cancellation reasons, and controllable operational breakdowns across markets, technicians, and time periods. Monitors HQ-driven cancellations, customer-driven cancellations, reschedules, cancellation timing, and recurring reason patterns to help identify where execution issues or customer friction are affecting completed jobs and revenue.", url:"https://nubrakes-analytics.github.io/nubrakes-cancellation-dashboard/", source:"webapp" },
+      return source || "webapp";
+    }
 
-  { dashboard_name:"NuBrakes x Velocity Referral Program Dashboard", category:"Operations", description:"Visibility into referral performance generated through the Velocity partnership. Tracks referral volume, booked jobs, completed jobs, conversion performance, market rankings, store-level contribution, and estimated revenue impact to help leadership understand how partner-driven demand is performing across markets and locations. Supports partnership monitoring, coaching, accountability, and faster decisions around store engagement, referral growth, and downstream repair conversion.", url:"https://nubrakes-analytics.github.io/nubrakes-velocity-referral-dashboard/", source:"webapp" },
-  {
+    function normalizeDashboard(item) {
+      const dashboardName =
+        item.dashboard_name ??
+        item.dashboardName ??
+        item.name ??
+        item.title ??
+        "Untitled Dashboard";
 
-  dashboard_name:"NuBrakes Photo Asset Library",
+      const category = normalizeCategory(
+        item.category ??
+        item.dashboard_category ??
+        item.type
+      );
 
-  category:"Marketing",
+      const description =
+        item.description ??
+        item.dashboard_description ??
+        item.summary ??
+        "";
 
-  description:"Searchable photo asset library for organizing and reviewing NuBrakes technician photos and marketing-ready visuals. Helps the team quickly find usable images for campaign emails, Customer.io broadcasts, landing pages, social content, and other marketing materials.",
+      const url =
+        item.url ??
+        item.dashboard_url ??
+        item.link ??
+        item.href ??
+        "";
 
-  url:"https://nubrakes-analytics.github.io/nubrakes-photo-library/gallery/",
+      const source = normalizeSource(
+        item.source ??
+        item.source_type ??
+        item.platform,
+        url
+      );
 
-  source:"webapp"
+      return {
+        dashboard_name:
+          String(dashboardName).trim(),
+        category,
+        description:
+          String(description).trim(),
+        url:
+          String(url).trim(),
+        source
+      };
+    }
 
-}
-];
+    function extractRecords(json) {
+      if (Array.isArray(json)) {
+        return json;
+      }
 
-document.getElementById('live-date').textContent = new Date().toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+      if (
+        json &&
+        Array.isArray(json.data)
+      ) {
+        return json.data;
+      }
 
-const grid       = document.getElementById('grid');
-const empty      = document.getElementById('empty');
-const searchEl   = document.getElementById('search');
-const countEl    = document.getElementById('result-count');
-const filterBtns = document.querySelectorAll('.filter-btn');
+      if (
+        json &&
+        Array.isArray(json.dashboards)
+      ) {
+        return json.dashboards;
+      }
 
-let activeFilter = 'All';
-let query = '';
+      if (
+        json &&
+        Array.isArray(json.records)
+      ) {
+        return json.records;
+      }
 
-function render() {
-  const q = query.toLowerCase().trim();
-  const filtered = DATA.filter(d => {
-    const catOk    = activeFilter === 'All' || d.category === activeFilter;
-    const searchOk = !q || d.dashboard_name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q) || d.category.toLowerCase().includes(q) || d.source.toLowerCase().includes(q);
-    return catOk && searchOk;
-  });
+      if (
+        json &&
+        Array.isArray(json.results)
+      ) {
+        return json.results;
+      }
 
-  grid.querySelectorAll('.dash-card').forEach(c => c.remove());
-  countEl.textContent = filtered.length;
+      return [];
+    }
 
-  if (!filtered.length) { empty.style.display = 'flex'; return; }
-  empty.style.display = 'none';
+    function getFilteredData() {
+      const normalizedQuery =
+        query.toLowerCase().trim();
 
-  filtered.forEach((d, i) => {
-    const isSheets = d.source === 'google sheets';
-    const card = document.createElement('a');
-    card.className = 'dash-card';
-    card.href = d.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
-    card.style.animationDelay = `${i * 35}ms`;
-    card.innerHTML = `
-      <div class="card-top">
-        <div class="card-name">${d.dashboard_name}</div>
-        <span class="badge ${d.category === 'Marketing' ? 'mkt' : 'ops'}">
-          <span class="badge-dot"></span>${d.category}
-        </span>
-      </div>
-      <div class="card-desc">${d.description}</div>
-      <div class="card-footer">
-        <span class="source-chip ${isSheets ? 'sheets' : 'webapp'}">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            ${isSheets
-              ? '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/>'
-              : '<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>'}
-          </svg>
-          ${isSheets ? 'Sheets' : 'Web App'}
-        </span>
-        <a class="open-btn" href="${d.url}" target="_blank" rel="noopener noreferrer">
-          Open
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17 17 7M7 7h10v10"/>
-          </svg>
-        </a>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
+      return DATA.filter((dashboard) => {
+        const category =
+          String(dashboard.category || "");
+        const name =
+          String(dashboard.dashboard_name || "");
+        const description =
+          String(dashboard.description || "");
+        const source =
+          String(dashboard.source || "");
 
-searchEl.addEventListener('input', e => { query = e.target.value; render(); });
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilter = btn.dataset.cat;
-    render();
-  });
-});
+        const categoryMatches =
+          activeFilter === "All" ||
+          category === activeFilter;
 
-render();
-</script>
+        const searchMatches =
+          !normalizedQuery ||
+          name
+            .toLowerCase()
+            .includes(normalizedQuery) ||
+          description
+            .toLowerCase()
+            .includes(normalizedQuery) ||
+          category
+            .toLowerCase()
+            .includes(normalizedQuery) ||
+          source
+            .toLowerCase()
+            .includes(normalizedQuery);
+
+        return categoryMatches &&
+          searchMatches;
+      });
+    }
+
+    function createCard(dashboard, index) {
+      const isSheets =
+        dashboard.source.includes("sheet") ||
+        dashboard.url
+          .toLowerCase()
+          .includes(
+            "docs.google.com/spreadsheets"
+          );
+
+      const isMarketing =
+        dashboard.category
+          .toLowerCase() === "marketing";
+
+      const card =
+        document.createElement("a");
+
+      card.className = "dash-card";
+      card.href = dashboard.url;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+      card.style.animationDelay =
+        `${index * 35}ms`;
+
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="card-name">
+            ${escapeHTML(
+              dashboard.dashboard_name
+            )}
+          </div>
+
+          <span class="badge ${
+            isMarketing ? "mkt" : "ops"
+          }">
+            <span class="badge-dot"></span>
+            ${escapeHTML(
+              dashboard.category
+            )}
+          </span>
+        </div>
+
+        <div class="card-desc">
+          ${escapeHTML(
+            dashboard.description
+          )}
+        </div>
+
+        <div class="card-footer">
+          <span class="source-chip ${
+            isSheets ? "sheets" : "webapp"
+          }">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              ${
+                isSheets
+                  ? `
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="2"
+                    />
+                    <path
+                      d="M9 9h6M9 12h6M9 15h4"
+                    />
+                  `
+                  : `
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                    />
+                    <path
+                      d="M12 8v4l3 3"
+                    />
+                  `
+              }
+            </svg>
+
+            ${
+              isSheets
+                ? "Sheets"
+                : "Web App"
+            }
+          </span>
+
+          <span class="open-btn">
+            Open
+
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M7 17 17 7M7 7h10v10"
+              />
+            </svg>
+          </span>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function showEmptyState(
+      message,
+      isError = false
+    ) {
+      empty.style.display = "flex";
+      emptyMessage.textContent = message;
+
+      emptyMessage.classList.toggle(
+        "error-message",
+        isError
+      );
+
+      retryBtn.hidden = !isError;
+    }
+
+    function hideEmptyState() {
+      empty.style.display = "none";
+      emptyMessage.classList.remove(
+        "error-message"
+      );
+      retryBtn.hidden = true;
+    }
+
+    function render() {
+      const filtered =
+        getFilteredData();
+
+      grid
+        .querySelectorAll(".dash-card")
+        .forEach((card) => card.remove());
+
+      countEl.textContent =
+        filtered.length;
+
+      if (!filtered.length) {
+        showEmptyState(
+          "No dashboards match your search."
+        );
+        return;
+      }
+
+      hideEmptyState();
+
+      filtered.forEach(
+        (dashboard, index) => {
+          grid.appendChild(
+            createCard(
+              dashboard,
+              index
+            )
+          );
+        }
+      );
+    }
+
+    async function loadDashboards() {
+      loadingEl.style.display = "flex";
+      statsRow.style.display = "none";
+      searchEl.disabled = true;
+      retryBtn.hidden = true;
+      hideEmptyState();
+
+      grid
+        .querySelectorAll(".dash-card")
+        .forEach((card) => card.remove());
+
+      try {
+        const response = await fetch(
+          DATA_URL,
+          {
+            cache: "no-store",
+            headers: {
+              Accept: "application/json"
+            }
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Request failed with status ${response.status}`
+          );
+        }
+
+        const json =
+          await response.json();
+
+        const records =
+          extractRecords(json);
+
+        DATA = records
+          .map(normalizeDashboard)
+          .filter(
+            (dashboard) =>
+              dashboard.dashboard_name &&
+              dashboard.url
+          );
+
+        if (!DATA.length) {
+          throw new Error(
+            "No valid dashboard records were found."
+          );
+        }
+
+        render();
+      } catch (error) {
+        console.error(
+          "Unable to load analytics hub data:",
+          error
+        );
+
+        DATA = [];
+        countEl.textContent = "0";
+
+        showEmptyState(
+          "Unable to load dashboards. Please check the JSON file and try again.",
+          true
+        );
+      } finally {
+        loadingEl.style.display = "none";
+        statsRow.style.display = "flex";
+        searchEl.disabled = false;
+      }
+    }
+
+    searchEl.addEventListener(
+      "input",
+      (event) => {
+        query = event.target.value;
+        render();
+      }
+    );
+
+    filterBtns.forEach((button) => {
+      button.addEventListener(
+        "click",
+        () => {
+          filterBtns.forEach(
+            (filterButton) => {
+              filterButton.classList.remove(
+                "active"
+              );
+            }
+          );
+
+          button.classList.add(
+            "active"
+          );
+
+          activeFilter =
+            button.dataset.cat;
+
+          render();
+        }
+      );
+    });
+
+    retryBtn.addEventListener(
+      "click",
+      loadDashboards
+    );
+
+    loadDashboards();
+  </script>
 </body>
 </html>
